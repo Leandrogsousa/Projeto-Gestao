@@ -16,5 +16,13 @@ namespace WindowsFormsAppPrincipal
         {
             InitializeComponent();
         }
+
+        private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(FormBuscarUsuario frm = new FormBuscarUsuario())
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }
