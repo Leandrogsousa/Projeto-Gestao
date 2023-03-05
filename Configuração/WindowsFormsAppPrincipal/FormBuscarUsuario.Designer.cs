@@ -37,6 +37,11 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grupoUsuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grupoUsuariosDataGridView = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.nomeGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioDataGridView)).BeginInit();
@@ -118,6 +123,54 @@
             this.grupoUsuariosDataGridView.Size = new System.Drawing.Size(276, 294);
             this.grupoUsuariosDataGridView.TabIndex = 1;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(61, 73);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(396, 28);
+            this.textBox1.TabIndex = 2;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnBuscar.Location = new System.Drawing.Point(506, 73);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(79, 32);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAdicionar.Location = new System.Drawing.Point(591, 73);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(79, 32);
+            this.btnAdicionar.TabIndex = 3;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAlterar.Location = new System.Drawing.Point(676, 73);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(79, 32);
+            this.btnAlterar.TabIndex = 3;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = false;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnExcluir.Location = new System.Drawing.Point(761, 73);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(79, 32);
+            this.btnExcluir.TabIndex = 3;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            // 
             // nomeGrupoDataGridViewTextBoxColumn
             // 
             this.nomeGrupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo do Usuário";
@@ -132,6 +185,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1143, 576);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnAlterar);
+            this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.grupoUsuariosDataGridView);
             this.Controls.Add(this.usuarioDataGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -143,6 +201,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuariosDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -160,5 +219,10 @@
         private System.Windows.Forms.DataGridView grupoUsuariosDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeGrupoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }

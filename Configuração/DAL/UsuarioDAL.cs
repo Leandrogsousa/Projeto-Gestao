@@ -24,7 +24,7 @@ namespace DAL
 
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
-                cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.Nome_usuario);
+                cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                 cmd.Parameters.AddWithValue("@CPF", _usuario.CPF);
                 cmd.Parameters.AddWithValue("@Email", _usuario.Email);
                 cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
@@ -67,7 +67,7 @@ namespace DAL
                             usuario = new Usuario();
                             usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
                             usuario.Nome = rd["Nome"].ToString();
-                            usuario.Nome_usuario = rd["NomeUsuario"].ToString();
+                            usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                             usuario.CPF = rd["CPF"].ToString();
                             usuario.Email = rd["Email"].ToString();
                             usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
@@ -98,7 +98,7 @@ namespace DAL
                     cmd.CommandText = @"UPDATE Usuario SET Nome = @Nome, NomeUsuario = @NomeUsuario, CPF = @CPF, Email = @Email, Senha = @Senha, Ativo = @Ativo WHERE IdUsuario = @IdUsuario";
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
-                    cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.Nome_usuario);
+                    cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
                     cmd.Parameters.AddWithValue("@CPF", _usuario.CPF);
                     cmd.Parameters.AddWithValue("@Email", _usuario.Email);
                     cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
@@ -169,7 +169,7 @@ namespace DAL
                             usuario = new Usuario();
                             usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
                             usuario.Nome = rd["Nome"].ToString();
-                            usuario.Nome_usuario = rd["NomeUsuario"].ToString();
+                            usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                             usuario.CPF = rd["CPF"].ToString();
                             usuario.Email = rd["Email"].ToString();
                             usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);

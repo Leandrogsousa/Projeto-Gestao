@@ -48,7 +48,7 @@ namespace BLL
                 throw new Exception("Informe o nome do usuário.");
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
-            return usuarioDAL.BuscarUsuarioPorNome(_nomeUsuario);
+            return usuarioDAL.BuscarPorNome(_nomeUsuario);
 
         }
         public List<Usuario> BuscarTodos()
@@ -70,11 +70,6 @@ namespace BLL
         }
     }
 
-    internal class UsuarioDAL
-    {
-        public UsuarioDAL()
-        {
-        }
-    }
+    
 }
 
