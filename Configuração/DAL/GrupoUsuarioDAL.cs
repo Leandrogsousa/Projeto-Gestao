@@ -107,9 +107,9 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM GrupoUsuario WHERE IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandText = @"DELETE FROM GrupoUsuario WHERE IdGrupoUsuario = @id_ GrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _grupoUsuario.IdGrupoUsuario);
+                cmd.Parameters.AddWithValue("@id_GrupoUsuario", _grupoUsuario.id_GrupoUsuario);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -124,5 +124,9 @@ namespace DAL
                 cn.Close();
             }
         }
+    }
+
+    public class GrupoUsuario
+    {
     }
 }

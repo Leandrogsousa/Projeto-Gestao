@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class Conexao
+    public static class Conexao
     {
         public static string StringDeConexao
         {
             get
             {
-                return @"User ID=SA;Initial Catalog=Gestao;Data Source=.\\LEANDRO_SOUSA";
-                
+                return @"User Id=Leandro_Sousa\leand;Initial Catalog=Gestao;Data Source=.\LEANDRO_SOUSA";
             }
         }
     }

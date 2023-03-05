@@ -69,5 +69,12 @@ namespace BLL
             usuarioDAL.Excluir(_usuario);
         }
     }
+
+    internal class UsuarioDAL
+    {
+        public UsuarioDAL()
+        {
+        }
+    }
 }
-}
+

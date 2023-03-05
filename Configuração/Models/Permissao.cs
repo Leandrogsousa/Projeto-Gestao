@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class Permissao
+    public class Permissao
     {
-        public int IdDescricao { get; set; }
-        public string Descricao { get; set; }
+        public int id_permissao { get; set; }
+        public string descricao { get; set; }
         public List<GrupoUsuario> GrupoUsuarios { get; set; }
     }
 }

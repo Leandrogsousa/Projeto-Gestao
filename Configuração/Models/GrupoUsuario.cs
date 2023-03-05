@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    internal class GrupoUsuario
+    public class GrupoUsuario
     {
-        public int IdGrupoUsuario { get; set; }
+        public int id_GrupoUsuario { get; set; }
         public string NomeGrupo { get; set; }
         public List<Permissao> Permissoes { get; set; }
     }

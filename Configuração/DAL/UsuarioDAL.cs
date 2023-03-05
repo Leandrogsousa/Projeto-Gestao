@@ -56,7 +56,7 @@ namespace DAL
                 {
                     cn.ConnectionString = Conexao.StringDeConexao;
                     cmd.Connection = cn;
-                    cmd.CommandText = "SELECT TOP 100 IDUsuario, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario";
+                    cmd.CommandText = "SELECT TOP 100 id_usuario, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario";
                     cmd.CommandType = System.Data.CommandType.Text;
                     cn.Open();
 
@@ -65,7 +65,7 @@ namespace DAL
                         while (rd.Read())
                         {
                             usuario = new Usuario();
-                            usuario.id_usuario = Convert.ToInt32(rd["IDUsuario"]);
+                            usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
                             usuario.Nome = rd["Nome"].ToString();
                             usuario.Nome_usuario = rd["NomeUsuario"].ToString();
                             usuario.CPF = rd["CPF"].ToString();
@@ -78,9 +78,6 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    //exemplo de concatenar:
-                    //Console.WriteLine(String.Format("Ocorreu o seguinte erro: {0} ao tentar buscar no banco, no número do erro é {1}", ex.Message, 154));
-                    //Console.WriteLine($"Ocorreu o seguinte erro: {ex.Message} ao tentar buscar no banco, no número do erro é {1}", ex.Message, 154));
                     throw new Exception("Ocorreu um erro ao tentar buscar todos os usuários: " + ex.Message);
                 }
                 finally
@@ -130,9 +127,9 @@ namespace DAL
                     cn.ConnectionString = Conexao.StringDeConexao;
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = cn;
-                    cmd.CommandText = @"DELETE FROM Usuario WHERE IDUsuario = @IDUsuario";
+                    cmd.CommandText = @"DELETE FROM Usuario WHERE id_usuario = @id_usuario";
                     cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.Parameters.AddWithValue("@IDUsuario", _usuario.id_usuario);
+                    cmd.Parameters.AddWithValue("@id_usuario", _usuario.id_usuario);
 
                     cn.Open();
                     cmd.ExecuteScalar();
@@ -147,7 +144,7 @@ namespace DAL
                     cn.Close();
                 }
             }
-            public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
+            public Usuario BuscarPorNome(string _nomeUsuario)
             {
                 SqlConnection cn = new SqlConnection();
                 SqlCommand cmd = new SqlCommand();
@@ -157,7 +154,7 @@ namespace DAL
                 {
                     cn.ConnectionString = Conexao.StringDeConexao;
                     cmd.Connection = cn;
-                    cmd.CommandText = @"SELECT IDUsuario, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario WHERE NomeUsuario = @NomeUsuario";
+                    cmd.CommandText = @"SELECT id_usuario, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario WHERE NomeUsuario = @NomeUsuario";
                     cmd.Parameters.AddWithValue("@NomeUsuario", _nomeUsuario);
                     cmd.CommandType = System.Data.CommandType.Text;
 
@@ -168,7 +165,7 @@ namespace DAL
                         while (rd.Read())
                         {
                             usuario = new Usuario();
-                            usuario.id_usuario = Convert.ToInt32(rd["IDUsuario"]);
+                            usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
                             usuario.Nome = rd["Nome"].ToString();
                             usuario.Nome_usuario = rd["NomeUsuario"].ToString();
                             usuario.CPF = rd["CPF"].ToString();
@@ -180,16 +177,14 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ocorreu um erro ao tentar buscar um usuário: " + ex.Message); ;
+                    throw new Exception("Ocorreu um erro ao tentar buscar por usuário: " + ex.Message); ;
                 }
                 finally
                 {
                     cn.Close();
                 }
 
-
-
-
             }
         }
+    }
 }
