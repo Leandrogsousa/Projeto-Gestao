@@ -12,7 +12,7 @@ namespace DAL
         {
             get
             {
-                return @"User ID=SA;Initial Catalog=Gestao;Data Source=.\\SQLEXPRESS2019";
+                return @"User ID=SA;Initial Catalog=Gestao;Data Source=.\\LEANDRO_SOUSA";
                 
             }
         }
