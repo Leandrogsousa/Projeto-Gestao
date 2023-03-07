@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Models;
+using System;
+using DAL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class GrupoUsuarioBLL
+    public class GrupoUsuarioBLL
     {
          public void Inserir(GrupoUsuario _grupousuario)
         {
@@ -37,5 +39,5 @@ namespace BLL
             grupoUsuarioDAL.Excluir(_grupoUsuario);
         }
     }
-    }
+  
 }

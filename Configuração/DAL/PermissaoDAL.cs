@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class PermissaoDAL
+    public class PermissaoDAL
     {
         public void Inserir(Permissao _permissao)
         {
@@ -20,7 +21,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"INSERT INTO Permissao(Descricao) VALUES (@Descricao)";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Descricao", _permissao.Descricao);
+                cmd.Parameters.AddWithValue("@Descricao", _permissao.descricao);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -54,8 +55,8 @@ namespace DAL
                     while (rd.Read())
                     {
                         permissao = new Permissao();
-                        permissao.id_descricao = Convert.ToInt32(rd["IdDescricao"]);
-                        permissao.Descricao = rd["Descricao"].ToString();
+                        permissao.id_permissao = Convert.ToInt32(rd["IdDescricao"]);
+                        permissao.descricao = rd["Descricao"].ToString();
                     }
                 }
                 //cmd.ExecuteScalar();
@@ -80,10 +81,10 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE Permissao SET Descricao = @Descricao WHERE IdDescricao = @IdDescricao";
+                cmd.CommandText = @"UPDATE Permissao SET Descricao = @Descricao WHERE id_permissao = @id_permissao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.id_descricao);
-                cmd.Parameters.AddWithValue("@Descricao", _permissao.Descricao);
+                cmd.Parameters.AddWithValue("@id_permissao", _permissao.id_permissao);
+                cmd.Parameters.AddWithValue("@descricao", _permissao.descricao);
 
                 cn.Open();
                 cmd.BeginExecuteNonQuery();
@@ -110,7 +111,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM Permissao WHERE IdDescricao = @IdDescricao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.id_descricao);
+                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.id_permissao);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();

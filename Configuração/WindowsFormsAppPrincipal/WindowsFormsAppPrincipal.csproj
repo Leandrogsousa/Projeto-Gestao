@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormBuscarGrupoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBuscarGrupoUsuario.Designer.cs">
+      <DependentUpon>FormBuscarGrupoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBuscarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBuscarGrupoUsuario.resx">
+      <DependentUpon>FormBuscarGrupoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBuscarUsuario.resx">
       <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,11 +114,14 @@
     <None Include="Resources\Logo Geatão 2.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{4CD6D1EA-DFBA-416C-A28E-0718DFF6E344}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{bc85fbad-d82d-41d6-ba18-fca106c043d9}</Project>
       <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

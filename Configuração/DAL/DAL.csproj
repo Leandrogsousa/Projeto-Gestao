@@ -48,14 +48,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{4CD6D1EA-DFBA-416C-A28E-0718DFF6E344}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{BC85FBAD-D82D-41D6-BA18-FCA106C043D9}</Project>
       <Name>Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\Models.GrupoUsuario.datasource" />
+    <None Include="Properties\DataSources\Models.Permissao.datasource" />
+    <None Include="Properties\DataSources\Models.Usuario.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

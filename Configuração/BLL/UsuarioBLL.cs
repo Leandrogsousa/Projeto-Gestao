@@ -1,5 +1,6 @@
 ﻿using Models;
 using System;
+using DAL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace BLL
 
             Usuario usuario = new Usuario();
 
-            usuario = BuscarUsuarioPorNome(_usuario.NomeUsuario);
+            usuario = BuscarPorNome(_usuario.NomeUsuario);
             if (usuario.NomeUsuario == _usuario.NomeUsuario)
                 throw new Exception("Usuário já existente");
 
@@ -23,7 +24,7 @@ namespace BLL
             usuarioDAL.Inserir(_usuario);
         }
 
-        private Usuario BuscarUsuarioPorNome(object nomeUsuario)
+        private Usuario BuscarPorNome(object nomeUsuario)
         {
             throw new NotImplementedException();
         }
@@ -42,7 +43,7 @@ namespace BLL
             if (_usuario.Senha.Length < 7 || _usuario.Senha.Length > 11)
                 throw new Exception("A senha deve ter entre 7 e 11 caracteres.");
         }
-        public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
+        public Usuario BuscarPorNome(string _nomeUsuario)
         {
             if (String.IsNullOrEmpty(_nomeUsuario))
                 throw new Exception("Informe o nome do usuário.");
@@ -70,6 +71,5 @@ namespace BLL
         }
     }
 
-    
 }
 

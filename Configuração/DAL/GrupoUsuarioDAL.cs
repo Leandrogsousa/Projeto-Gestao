@@ -1,5 +1,5 @@
-﻿using BLL;
-using System;
+﻿using System;
+using Models;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class GrupoUsuarioDAL
+    public class GrupoUsuarioDAL
     {
         public void Inserir(GrupoUsuario _grupousuario)
         {
@@ -126,7 +126,4 @@ namespace DAL
         }
     }
 
-    public class GrupoUsuario
-    {
-    }
-}
+   }
