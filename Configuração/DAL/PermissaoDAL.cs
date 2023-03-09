@@ -19,9 +19,9 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"INSERT INTO Permissao(Descricao) VALUES (@Descricao)";
+                cmd.CommandText = @"INSERT INTO Permissao(descricao) VALUES (@descricao)";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Descricao", _permissao.descricao);
+                cmd.Parameters.AddWithValue("@descricao", _permissao.descricao);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -46,20 +46,20 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT TOP 100 IdDescricao, Descricao FROM Permissao WHERE IdDescricao = @IdDescricao";
+                cmd.CommandText = "Select TOP 100 id_permissao, descricao FROM Permissao WHERE id_permissao = @id_permissao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _id);
+                cmd.Parameters.AddWithValue("@id_permissao", _id);
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
                         permissao = new Permissao();
-                        permissao.id_permissao = Convert.ToInt32(rd["IdDescricao"]);
-                        permissao.descricao = rd["Descricao"].ToString();
+                        permissao.id_permissao = Convert.ToInt32(rd["id_permissao"]);
+                        permissao.descricao = rd["descricao"].ToString();
                     }
                 }
-                //cmd.ExecuteScalar();
+                
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE Permissao SET Descricao = @Descricao WHERE id_permissao = @id_permissao";
+                cmd.CommandText = @"UPDATE Permissao SET descricao = @id_permissao WHERE id_permissao = @id_permissao";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@id_permissao", _permissao.id_permissao);
                 cmd.Parameters.AddWithValue("@descricao", _permissao.descricao);
@@ -93,7 +93,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception("Ocorreu um erro ao tentar atualizar uma descrição no banco: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar atualizar uma permissao no banco: " + ex.Message);
             }
             finally
             {
@@ -109,9 +109,9 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM Permissao WHERE IdDescricao = @IdDescricao";
+                cmd.CommandText = @"DELETE FROM Permissao WHERE id_permissao = @id_permissao";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdDescricao", _permissao.id_permissao);
+                cmd.Parameters.AddWithValue("@id_permissao", _permissao.id_permissao);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -119,7 +119,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception("Ocorreu um erro ao tentar excluir uma descrição no banco: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar excluir uma permissão no banco: " + ex.Message);
             }
             finally
             {

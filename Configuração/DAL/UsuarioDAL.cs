@@ -65,12 +65,14 @@ namespace DAL
                     if (rd.Read())
                     {
                         usuario = new Usuario();
-                        usuario.id_usuario = Convert.ToInt32(rd["Id"]);
+                        usuario.id_usuario = Convert.ToInt32(rd["id_usuario"]);
                         usuario.Nome = rd["Nome"].ToString();
                         usuario.NomeUsuario = rd["NomeUsuario"].ToString();
                         usuario.CPF = rd["CPF"].ToString();
                         usuario.Email = rd["Email"].ToString();
                         usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorNome(usuario.id_usuario);
                     }
                     else
                     {
@@ -132,14 +134,64 @@ namespace DAL
             }
         }
 
-        public void Alterar(Usuario alterarUsuario)
+        public void Alterar(Usuario _alterarUsuario)
         {
-            throw new NotImplementedException();
+            SqlConnection cn = new SqlConnection();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"UPDATE Usuario SET Nome = @Nome, NomeUsuario = @NomeUsuario, CPF = @CPF, Email = @Email, Senha = @Senha, Ativo = @Ativo WHERE id_usuario = @id_usuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Nome", _alterarUsuario.Nome);
+                cmd.Parameters.AddWithValue("@NomeUsuario", _alterarUsuario.NomeUsuario);
+                cmd.Parameters.AddWithValue("@CPF", _alterarUsuario.CPF);
+                cmd.Parameters.AddWithValue("@Email", _alterarUsuario.Email);
+                cmd.Parameters.AddWithValue("@Senha", _alterarUsuario.Senha);
+                cmd.Parameters.AddWithValue("@Ativo", _alterarUsuario.Ativo);
+                cmd.Parameters.AddWithValue("@id_usuario", _alterarUsuario.id_usuario);
+
+                cn.Open();
+                cmd.BeginExecuteNonQuery();
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar atualizar o cadastro de usuário no banco: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
 
-        public void Excluir(Usuario usuario)
+        public void Excluir(Usuario _usuario)
         {
-            throw new NotImplementedException();
+            SqlConnection cn = new SqlConnection();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"DELETE FROM Usuario WHERE id_usuario = @id_usuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id_usuario", _usuario.id_usuario);
+
+                cn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar excluir o usuário no banco de dados: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
     }
 }

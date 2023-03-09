@@ -67,32 +67,33 @@
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
             // permissõesToolStripMenuItem
             // 
             this.permissõesToolStripMenuItem.Name = "permissõesToolStripMenuItem";
-            this.permissõesToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.permissõesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.permissõesToolStripMenuItem.Text = "Permissões";
+            this.permissõesToolStripMenuItem.Click += new System.EventHandler(this.permissõesToolStripMenuItem_Click);
             // 
             // grupoDeUsuáriosToolStripMenuItem
             // 
             this.grupoDeUsuáriosToolStripMenuItem.Name = "grupoDeUsuáriosToolStripMenuItem";
-            this.grupoDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.grupoDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.grupoDeUsuáriosToolStripMenuItem.Text = "Grupo de Usuários";
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // fornecedoresToolStripMenuItem
             // 
             this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.fornecedoresToolStripMenuItem.Text = "Fornecedores";
             // 
             // contextMenuStrip1

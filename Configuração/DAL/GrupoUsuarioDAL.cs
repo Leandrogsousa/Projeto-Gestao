@@ -21,7 +21,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"INSERT INTO GrupoUsuario(NomeGrupo) VALUES (@NomeGrupo)";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@NomeGrupo", _grupousuario.NomeGrupo);
+                cmd.Parameters.AddWithValue("@GrupoUsuario", _grupousuario.NomeGrupo);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -29,7 +29,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception("Ocorreu um erro ao tentar inserir o nome do grupo no banco: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar inserir o Nome do grupo no banco: " + ex.Message);
             }
             finally
             {
@@ -45,9 +45,9 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = "SELECT TOP 100 IdGrupoUsuario, NomeGrupo FROM GrupoUsuario WHERE IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandText = "SELECT TOP 100 id_GrupoUsuario, NomeGrupo FROM GrupoUsuario WHERE id_GrupoUsuario = @id_GrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IdGrupoUsuario", _grupousuario.id_GrupoUsuario);
+                cmd.Parameters.AddWithValue("@id_NomeGrupo", _grupousuario.id_GrupoUsuario);
 
                 cn.Open();
 
@@ -56,14 +56,14 @@ namespace DAL
                     while (rd.Read())
                     {
                         grupo = new GrupoUsuario();
-                        grupo.id_GrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
+                        grupo.id_GrupoUsuario = Convert.ToInt32(rd["id_GrupoUsuario"]);
                         grupo.NomeGrupo = rd["NomeGrupo"].ToString();
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao tentar listar grupo." + ex.Message);
+                throw new Exception("Erro ao tentar listar o grupo." + ex.Message);
             }
             finally
             {
@@ -80,14 +80,14 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE GrupoUsuario SET NomeGrupo = @NomeGrupo WHERE IdGrupoUsuario = @IdGrupoUsuario";
+                cmd.CommandText = @"UPDATE GrupoUsuario SET NomeGrupo = @NomeGrupo WHERE id_GrupoUsuario = @id_GrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("IdGrupoUsuario", _grupousuario.id_GrupoUsuario);
-                cmd.Parameters.AddWithValue("@NomeGrupo", _grupousuario.NomeGrupo);
+                cmd.Parameters.AddWithValue("id_GrupoUsuario", _grupousuario.id_GrupoUsuario);
+                cmd.Parameters.AddWithValue("@GrupoUsuario", _grupousuario.NomeGrupo);
 
                 cn.Open();
                 cmd.BeginExecuteNonQuery();
-                //cmd.ExecuteScalar();
+                
             }
             catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM GrupoUsuario WHERE IdGrupoUsuario = @id_ GrupoUsuario";
+                cmd.CommandText = @"DELETE FROM GrupoUsuario WHERE id_GrupoUsuario = @id_GrupoUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@id_GrupoUsuario", _grupoUsuario.id_GrupoUsuario);
 

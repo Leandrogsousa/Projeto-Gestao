@@ -24,5 +24,10 @@ namespace WindowsFormsAppPrincipal
                 frm.ShowDialog();
             }
         }
+
+        private void permissõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
