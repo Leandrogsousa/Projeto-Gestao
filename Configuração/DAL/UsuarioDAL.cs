@@ -161,7 +161,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar atualizar o cadastro de usuário no banco: " + ex.Message);
+                throw new Exception("Ocorreu um erro ao tentar Atualizar o cadastro de usuário no banco: " + ex.Message);
             }
             finally
             {
@@ -194,6 +194,11 @@ namespace DAL
             {
                 cn.Close();
             }
+        }
+
+        public Usuario BuscarPorID(int id_usuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }

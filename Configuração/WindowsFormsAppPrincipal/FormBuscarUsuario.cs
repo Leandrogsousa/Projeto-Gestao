@@ -32,6 +32,11 @@ namespace WindowsFormsAppPrincipal
                 usuarioBindingSource.DataSource = usuarioBLL.BuscarPorNome(txtBuscar.Text);
             }
         }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
