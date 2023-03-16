@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WindowsFormsAppPrincipal
 {
@@ -49,6 +50,34 @@ namespace WindowsFormsAppPrincipal
                 frm.ShowDialog();
             }
           
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (usuarioBindingSource.Count <0)
+            {
+                MessageBox.Show("Não existe registro para ser excluído!");
+                return;
+            }
+            if (MessageBox.Show("Deseja realmente excluir esse registro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+            return ;
+
+            int id_usuario = ((Usuario)usuarioBindingSource.Current).id_usuario;
+            new UsuarioBLL().Excluir(id_usuario);
+
+            MessageBox.Show("Registro excluído com sucesso.");
+            btnBuscar_Click(null, null);
+        }
+
+        private void btnAdicionarGrupo_Click(object sender, EventArgs e)
+        {
+            using (FormConsultarGrupoUsuario frm = new FormConsultarGrupoUsuario())
+            {
+                frm.ShowDialog();
+                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                int id_usuario = ((Usuario)usuarioBindingSource.Current).id_usuario;
+                usuarioBLL.AdicionarGrupo(id_usuario, frm.id);
+            }
         }
     }
 

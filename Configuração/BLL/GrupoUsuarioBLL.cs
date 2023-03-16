@@ -38,6 +38,8 @@ namespace BLL
             GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
             grupoUsuarioDAL.Excluir(_grupoUsuario);
         }
+
+ 
     }
   
 }

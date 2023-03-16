@@ -64,5 +64,7 @@ namespace WindowsFormsAppPrincipal
             if (!alterar)
                 usuarioBindingSource.AddNew();
         }
+
+        
     }
 }
