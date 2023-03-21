@@ -200,5 +200,46 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public bool ExisteRelacionamento(int idUsuario, int idGrupoUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AdicionarGrupo(int idUsuario, int idGrupoUsuario)
+        {
+            throw new NotImplementedException();
+        }
+        public bool ValidarPermissao(int _idUsuario, int _idPermissao)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario;
+
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELELCT TOP 1 1  AS Resultado FROM UsuarioGrupoUsuario
+                                    INNER JOIN PermissaoGrupoUsuario
+                                    ON UsuarioGrupoUsuario.id_GrupoUsuario = PermissaoGrupoUsuario.id_GrupoUsuario
+                                    WHERE UsuarioGrupoUsuario.id_usuario = @id\-usuario
+                                    AND PermissaoGrupoUsuario.id_permissao = @id_permissao";
+                cmd.CommandText = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@id_usuario", _idUsuario);
+                cmd.Parameters.AddWithValue("@id_permissao", _idPermissao);
+
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader()) ;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

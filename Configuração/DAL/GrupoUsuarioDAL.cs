@@ -71,6 +71,46 @@ namespace DAL
             }
             return grupo;
         }
+
+        public List<GrupoUsuario> BuscarPorNomeGrupo(string _nomeGrupo)
+        {
+            List<GrupoUsuario> grupo_nomes = new List<GrupoUsuario>();
+            GrupoUsuario grupo = new GrupoUsuario();
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT id_GrupoUsuario, NomeGrupo FROM GrupoUsuario WHERE NomeGrupo like @NomeGrupo";
+                cmd.Parameters.AddWithValue("@NomeGrupo", "%" + _nomeGrupo + "%");
+                cmd.CommandType = System.Data.CommandType.Text;
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        grupo = new GrupoUsuario();
+                        grupo.id_GrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
+                        grupo.NomeGrupo = rd["NomeGrupo"].ToString();
+                        PermissaoDAL permissaoDAL = new PermissaoDAL();
+                        grupo.Permissoes = permissaoDAL.BuscarPorIdGrupo(grupo.id_GrupoUsuario);
+
+                        grupo_nomes.Add(grupo);
+                    }
+                }
+                return grupo_nomes;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro ao tentar buscar Nome do Grupo: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
         public void Alterar(GrupoUsuario _grupousuario)
         {
             SqlConnection cn = new SqlConnection();

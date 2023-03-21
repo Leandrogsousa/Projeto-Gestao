@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +23,20 @@ namespace WindowsFormsAppPrincipal
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
-            
-            grupoUsuarioBindingSource.DataSource = grupoUsuarioBLL.BuscarGrupoPorNome(txtBuscarGrupo);
+            grupoUsuarioBindingSource.DataSource = new GrupoUsuarioBLL().BuscarPorNomeGrupo(txtBuscarGrupo.Text);
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            if (grupoUsuarioBindingSource.Count >0)
+            {
+                id = ((GrupoUsuario)grupoUsuarioBindingSource.Current).id_GrupoUsuario;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Não existe um grupo de usuário para ser selecionado.");
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ namespace WindowsFormsAppPrincipal
             if (alterar)
             {
                 usuarioBindingSource.DataSource = new UsuarioBLL().BuscarPorID(_id_usuario);
+                
             }
         }
 
