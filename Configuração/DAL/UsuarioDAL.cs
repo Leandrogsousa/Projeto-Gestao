@@ -178,9 +178,10 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM Usuario WHERE id_usuario = @id_usuario";
+                cmd.CommandText = @"DELETE FROM UsuarioGrupoUsuario WHERE id_usuario = @id_usuario
+                                    DELETE FROM Usuario WHERE id_usuario = @id_usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@id_usuario", _usuario.id_usuario);
+                cmd.Parameters.AddWithValue("@id_usuario", _usuario);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -212,8 +213,7 @@ namespace DAL
         }
         public bool ValidarPermissao(int _idUsuario, int _idPermissao)
         {
-            List<Usuario> usuarios = new List<Usuario>();
-            Usuario usuario;
+           
 
             SqlConnection cn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -225,17 +225,18 @@ namespace DAL
                 cmd.CommandText = @"SELELCT TOP 1 1  AS Resultado FROM UsuarioGrupoUsuario
                                     INNER JOIN PermissaoGrupoUsuario
                                     ON UsuarioGrupoUsuario.id_GrupoUsuario = PermissaoGrupoUsuario.id_GrupoUsuario
-                                    WHERE UsuarioGrupoUsuario.id_usuario = @id\-usuario
+                                    WHERE UsuarioGrupoUsuario.id_usuario = @id_usuario
                                     AND PermissaoGrupoUsuario.id_permissao = @id_permissao";
-                cmd.CommandText = System.Data.CommandType.Text;
 
+
+                cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@id_usuario", _idUsuario);
                 cmd.Parameters.AddWithValue("@id_permissao", _idPermissao);
 
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader()) ;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
