@@ -126,6 +126,46 @@ namespace DAL
                 cn.Close();
             }
         }
+        public List<Permissao> BuscarPorIdGrupo(int _idGrupoUsuario)
+        {
+            List<Permissao> permissaos = new List<Permissao>();
+            Permissao permissao = new Permissao();
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT Permissao.id_descricao, Permissao.descricao FROM GrupoUsuario
+                                    INNER JOIN PermissaoGrupoUsuario ON GrupoUsuario.id_GrupoUsuario = PermissaoGrupoUsuario.IdGrupoUsuario
+									inner join Permissao on PermissaoGrupoUsuario.Id_Descricao = Permissao.IDDescricao
+                                    WHERE GrupoUsuario.id_GrupoUsuario = @id_GrupoUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IDGrupoUsuario", _idGrupoUsuario);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        permissao = new Permissao();
+                        permissao.id_permissao = Convert.ToInt32(rd["IdDescricao"]);
+                        permissao.descricao = rd["Descricao"].ToString();
+                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+                        permissao.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario(permissao.id_permissao);
+                        permissaos.Add(permissao);
+                    }
+                }
+                return permissaos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar buscar Grupo de Usuarios: " + ex.Message); ;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
     }
 }
 
