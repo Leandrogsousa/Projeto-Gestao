@@ -151,7 +151,7 @@ namespace DAL
                         permissao.id_permissao = Convert.ToInt32(rd["IdDescricao"]);
                         permissao.descricao = rd["Descricao"].ToString();
                         GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-                        permissao.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario(permissao.id_permissao);
+                        permissao.GrupoUsuarios = grupoUsuarioDAL.BuscarPorId(permissao.id_permissao);
                         permissaos.Add(permissao);
                     }
                 }
