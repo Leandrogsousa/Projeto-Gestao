@@ -1,5 +1,6 @@
 use Gestao
-select * from Usuario
+
+select* from Usuario
 
 insert into Usuario(id_usuario,Nome,NomeUsuario,CPF,Email,Senha,Ativo)
-values(2,'Rodrigo Franco','Rodrigo','420.125.932--11','rodrigo@gmail.com',65468320902,1)
+values (3,'Luana Cristina','Chris','515-546-103-78','luanacristina@gmail.com',92074631842,0)

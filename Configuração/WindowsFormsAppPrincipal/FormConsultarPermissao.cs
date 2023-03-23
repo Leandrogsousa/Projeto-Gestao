@@ -1,5 +1,4 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-    public partial class FormBuscarGrupoUsuario : Form
+    public partial class FormConsultarPermissao : Form
     {
-        public FormBuscarGrupoUsuario()
+        public FormConsultarPermissao()
         {
             InitializeComponent();
-        }
-
-        private void btnBuscargrupousuario_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

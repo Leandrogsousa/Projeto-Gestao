@@ -236,7 +236,7 @@ namespace DAL
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader()) ;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;

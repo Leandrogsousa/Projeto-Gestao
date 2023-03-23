@@ -36,6 +36,7 @@ namespace WindowsFormsAppPrincipal
 
             try
             {
+                
                 usuarioBindingSource.EndEdit();
 
                 if (!alterar)
