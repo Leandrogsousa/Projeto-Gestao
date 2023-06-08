@@ -85,6 +85,11 @@ namespace BLL
             usuarioDAL.AdicionarGrupo(_idUsuario, _idGrupoUsuario);
             
         }
+
+        public void Excluir(int id_usuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

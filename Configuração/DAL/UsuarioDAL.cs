@@ -196,7 +196,32 @@ namespace DAL
                 cn.Close();
             }
         }
+        public void AdicionarGrupo(int idUsuario, int idGrupoUsuario)
+        {
+            SqlConnection cn = new SqlConnection();
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"INSERT INTO UsuarioGrupoUsuario(id_usuario, id_GrupoUsuario) 
+                                    VALUES (@id_usuario, @id_GrupoUsuario)";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                cmd.Parameters.AddWithValue("@id_GrupoUsuario", idGrupoUsuario);
 
+                cn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar inserir um grupo no banco: " + ex.Message);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
         public Usuario BuscarPorID(int id_usuario)
         {
             throw new NotImplementedException();
@@ -207,16 +232,12 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public void AdicionarGrupo(int idUsuario, int idGrupoUsuario)
-        {
-            throw new NotImplementedException();
-        }
+
         public bool ValidarPermissao(int _idUsuario, int _idPermissao)
         {
-           
-
             SqlConnection cn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
+            Usuario usuario = new Usuario();
 
             try
             {
@@ -236,10 +257,15 @@ namespace DAL
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader()) ;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new Exception("Ocorreu um erro ao tentar validar permissão do usuário  banco de dados: " + ex.Message);
+            }
+            finally
+
+            {
+                cn.Close(); 
             }
         }
     }
