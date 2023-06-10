@@ -121,7 +121,7 @@ namespace DAL
                 cn.Close();
             }
         }
-        public ClienteDAL BuscarPorId(int _id)
+        public Cliente BuscarPorId(int _id)
         {
           
             Cliente cliente = new Cliente();
@@ -132,7 +132,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FORM Cliente WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@Id",_id );
+                cmd.Parameters.AddWithValue("@Id",_id);
 
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
@@ -161,7 +161,7 @@ namespace DAL
             }
             
         }
-        public ClienteDAL BuscarPorCPF(string _CPF)
+        public Cliente BuscarPorCPF(string _CPF)
         {
             Cliente cliente = new Cliente();
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
@@ -200,7 +200,7 @@ namespace DAL
             }
 
         }
-        public void Alterar(ClienteDAL _cliente)
+        public void Alterar(Cliente _cliente)
         {
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
