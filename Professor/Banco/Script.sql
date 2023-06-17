@@ -1,3 +1,4 @@
+
 USE master
 GO
 
@@ -67,6 +68,15 @@ CPF VARCHAR(15),
 RG VARCHAR(15),
 Email VARCHAR(200),
 Fone VARCHAR(15)
+)
+GO
+
+CREATE TABLE Fornecedor(
+Id int primary key identity(1,1),
+Nome VARCHAR(150),
+Fone VARCHAR(150),
+Email VARCHAR(200),
+Site VARCHAR(250)
 )
 GO
 

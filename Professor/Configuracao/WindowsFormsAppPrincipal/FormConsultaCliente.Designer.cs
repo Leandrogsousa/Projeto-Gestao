@@ -46,6 +46,7 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.clienteDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -134,9 +135,9 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(11, 103);
+            this.txtBuscar.Location = new System.Drawing.Point(115, 103);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(446, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(342, 22);
             this.txtBuscar.TabIndex = 3;
             // 
             // label2
@@ -205,11 +206,20 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(8, 103);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(101, 24);
+            this.comboBox1.TabIndex = 11;
+            // 
             // FormConsultaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 525);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.btnAlterar);
@@ -248,5 +258,6 @@
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
